@@ -1,0 +1,4 @@
+project_id = "oasis-property-maintenance"
+
+[functions.invoicePayment]
+verify_jwt = false
