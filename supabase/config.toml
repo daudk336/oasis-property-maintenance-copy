@@ -1,0 +1,5 @@
+[functions.invoicePayment]
+verify_jwt = false
+
+[functions.stripeInvoiceWebhook]
+verify_jwt = false
