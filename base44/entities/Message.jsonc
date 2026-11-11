@@ -1,0 +1,67 @@
+{
+  "name": "Message",
+  "type": "object",
+  "properties": {
+    "client_name": {
+      "type": "string",
+      "description": "Recipient client name"
+    },
+    "channel": {
+      "type": "string",
+      "enum": [
+        "email",
+        "sms"
+      ],
+      "description": "Message channel"
+    },
+    "recipient": {
+      "type": "string",
+      "description": "Email address or phone number"
+    },
+    "subject": {
+      "type": "string",
+      "description": "Subject (email only)"
+    },
+    "body": {
+      "type": "string",
+      "description": "Message body"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "sent",
+        "logged",
+        "failed"
+      ],
+      "default": "logged",
+      "description": "Delivery status"
+    }
+  },
+  "required": [
+    "channel",
+    "recipient",
+    "body"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

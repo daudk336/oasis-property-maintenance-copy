@@ -1,0 +1,93 @@
+{
+  "name": "Booking",
+  "type": "object",
+  "properties": {
+    "customer_name": {
+      "type": "string",
+      "description": "Customer name"
+    },
+    "customer_phone": {
+      "type": "string",
+      "description": "Customer phone number"
+    },
+    "customer_email": {
+      "type": "string",
+      "format": "email",
+      "description": "Customer email address"
+    },
+    "service": {
+      "type": "string",
+      "description": "Service being booked"
+    },
+    "booking_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of service"
+    },
+    "time_slot": {
+      "type": "string",
+      "enum": [
+        "8am-10am",
+        "10am-12pm",
+        "12pm-2pm",
+        "2pm-4pm",
+        "4pm-6pm"
+      ],
+      "description": "Time slot for service"
+    },
+    "address": {
+      "type": "string",
+      "description": "Service address"
+    },
+    "suburb": {
+      "type": "string",
+      "description": "Suburb"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional notes or requirements"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "confirmed",
+        "in_progress",
+        "completed",
+        "cancelled"
+      ],
+      "default": "pending",
+      "description": "Booking status"
+    },
+    "estimated_price": {
+      "type": "number",
+      "description": "Estimated price for the service"
+    }
+  },
+  "required": [
+    "customer_name",
+    "customer_phone",
+    "service",
+    "booking_date",
+    "time_slot",
+    "suburb"
+  ],
+  "rls": {
+    "create": {},
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

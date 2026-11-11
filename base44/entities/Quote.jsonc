@@ -1,0 +1,79 @@
+{
+  "name": "Quote",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Customer name"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Contact phone number"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Contact email address"
+    },
+    "suburb": {
+      "type": "string",
+      "description": "Property suburb/location"
+    },
+    "services": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of services requested"
+    },
+    "service_type": {
+      "type": "string",
+      "enum": [
+        "one_off",
+        "ongoing"
+      ],
+      "description": "One-off job or ongoing service"
+    },
+    "message": {
+      "type": "string",
+      "description": "Additional message or details"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "new",
+        "contacted",
+        "quoted",
+        "accepted",
+        "declined"
+      ],
+      "default": "new",
+      "description": "Quote status"
+    }
+  },
+  "required": [
+    "name",
+    "phone",
+    "suburb",
+    "services",
+    "service_type"
+  ],
+  "rls": {
+    "create": {},
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

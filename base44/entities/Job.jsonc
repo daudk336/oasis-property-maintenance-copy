@@ -1,0 +1,88 @@
+{
+  "name": "Job",
+  "type": "object",
+  "properties": {
+    "client_name": {
+      "type": "string",
+      "description": "Client name"
+    },
+    "client_phone": {
+      "type": "string",
+      "description": "Client phone"
+    },
+    "service": {
+      "type": "string",
+      "description": "Service to perform"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "Scheduled date"
+    },
+    "time_slot": {
+      "type": "string",
+      "enum": [
+        "8am-10am",
+        "10am-12pm",
+        "12pm-2pm",
+        "2pm-4pm",
+        "4pm-6pm"
+      ],
+      "description": "Time slot"
+    },
+    "address": {
+      "type": "string",
+      "description": "Job address"
+    },
+    "suburb": {
+      "type": "string",
+      "description": "Suburb"
+    },
+    "price": {
+      "type": "number",
+      "description": "Agreed price"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "scheduled",
+        "in_progress",
+        "completed",
+        "cancelled"
+      ],
+      "default": "scheduled",
+      "description": "Job status"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Job notes"
+    }
+  },
+  "required": [
+    "client_name",
+    "service",
+    "date"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
