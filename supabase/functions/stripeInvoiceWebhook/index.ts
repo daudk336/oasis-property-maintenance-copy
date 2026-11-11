@@ -1,8 +1,5 @@
 import Stripe from "npm:stripe@17.7.0";
 
-const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY") ?? "");
-const cryptoProvider = Stripe.createSubtleCryptoProvider();
-
 Deno.serve(async (request) => {
   if (request.method !== "POST") return new Response("Method not allowed", { status: 405 });
 
@@ -16,6 +13,8 @@ Deno.serve(async (request) => {
     return new Response("Webhook is not configured", { status: 500 });
   }
 
+  const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY")!);
+  const cryptoProvider = Stripe.createSubtleCryptoProvider();
   let event: Stripe.Event;
   try {
     event = await stripe.webhooks.constructEventAsync(
